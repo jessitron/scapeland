@@ -1,0 +1,2 @@
+cp index.html target
+elm make --output target/elm.js src/Scapeland.elm
