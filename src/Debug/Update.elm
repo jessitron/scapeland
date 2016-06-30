@@ -6,7 +6,7 @@ import Msg exposing (Msg(MousePosition))
 update msg model =
     let
         debugModel =
-            { messages = model.debug.messages ++ [ msg ] }
+            { messages = msg :: model.debug.messages }
 
         model =
             { model | debug = debugModel }

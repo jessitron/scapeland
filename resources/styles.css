@@ -21,4 +21,6 @@ aside {
   position: absolute;
   border: 3px groove green;
   box-sizing: border-box;
+  vertical-align: top;
+  overflow: scroll;
 }
