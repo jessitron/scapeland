@@ -1,18 +1,18 @@
 module View exposing (view)
 
 import Html exposing (Html)
-import Html.Attributes as Attr
 import Model exposing (Model)
+import Msg exposing (Msg)
+import Debug.View
+import Landscape.View
 
 
-view : Model -> Html Never
+view : Model -> Html Msg
 view model =
-    Html.main' []
-        [ Html.canvas
-            [ Attr.style
-                [ ( "background-image", "url(images/elmscape.png)" )
-                ]
-            , Attr.class "whatever"
+    Html.div []
+        [ Html.main' []
+            [ Landscape.View.view model
             ]
-            []
+        , Html.aside []
+            [ Debug.View.view model ]
         ]
