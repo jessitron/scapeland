@@ -4,6 +4,19 @@ import Html
 
 
 view m =
+    Html.div [] [ subscriptionValues m, messages m.debug.messages ]
+
+
+messages m =
+    Html.ul []
+        (List.map messageItem m)
+
+
+messageItem msg =
+    Html.li [] [ Html.text (toString msg) ]
+
+
+subscriptionValues m =
     Html.div [] [ mousePositionSubscription m.mousePosition ]
 
 
