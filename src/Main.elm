@@ -1,15 +1,16 @@
-module Scapeland exposing (main)
+module Main exposing (main)
 
 import Html exposing (Html)
 import Html.App
+import View
+import Model
 
 
 main : Program Never
 main =
-    { model = ()
+    { model = {}
     , update = \a m -> m
     , view =
-        \_ ->
-            Html.text "put program here"
+        View.view
     }
         |> Html.App.beginnerProgram

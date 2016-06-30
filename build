@@ -1,2 +1,3 @@
-cp index.html target
-elm make --output target/elm.js src/Scapeland.elm
+rm -rf target/*
+cp -r resources/* target
+elm make --output target/elm.js src/Main.elm
