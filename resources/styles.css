@@ -24,3 +24,40 @@ aside {
   vertical-align: top;
   overflow: scroll;
 }
+
+aside ul {
+  margin: 0;
+  padding: 0;
+}
+
+aside li {
+  margin: 0 10px;
+  margin-right: 10px;
+  padding: 0;
+  list-style-type: none;
+}
+
+aside li:first-of-type {
+  margin: 10px 10px;
+  padding: 0;
+}
+
+.debugSection {
+  border: 2px groove green;
+  margin: 10px;
+  padding: 10px;
+}
+
+.debugSection label {
+  font-family: Helvetica;
+  padding-right: 5px;
+  text-align: right;
+  width: 40%;
+}
+
+.debugSection output {
+  font-family: Courier;
+  border: 1px solid black;
+  padding: 2px;
+  min-width: 60%; /* I don't know how to do this */
+}

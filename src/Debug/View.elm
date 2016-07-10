@@ -1,6 +1,7 @@
 module Debug.View exposing (view)
 
 import Html
+import Html.Attributes as Attr
 
 
 view m =
@@ -17,8 +18,11 @@ messageItem msg =
 
 
 subscriptionValues m =
-    Html.div [] [ mousePositionSubscription m.mousePosition ]
+    Html.div [ Attr.class "debugSection" ] [ mousePositionSubscription m.mousePosition ]
 
 
 mousePositionSubscription m =
-    Html.div [] [ Html.text "Mouse Position", Html.text (toString m) ]
+    Html.div []
+        [ Html.label [] [ Html.text "Mouse Position" ]
+        , Html.output [] [ Html.text (toString m) ]
+        ]
