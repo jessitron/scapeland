@@ -9,8 +9,9 @@ view m =
 
 
 messages m =
-    Html.ul []
-        (List.map messageItem m)
+    debugSection "Messages"
+        [ Html.ul [] (List.map messageItem m)
+        ]
 
 
 messageItem msg =
@@ -18,7 +19,18 @@ messageItem msg =
 
 
 subscriptionValues m =
-    Html.div [ Attr.class "debugSection" ] [ mousePositionSubscription m.mousePosition ]
+    debugSection "Subscriptions"
+        [ mousePositionSubscription m.mousePosition
+        ]
+
+
+debugSection name contents =
+    Html.div [ Attr.class "debugSection" ]
+        ([ Html.text name
+         , Html.hr [] []
+         ]
+            ++ contents
+        )
 
 
 mousePositionSubscription m =
