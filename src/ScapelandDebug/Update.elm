@@ -1,14 +1,25 @@
 module ScapelandDebug.Update exposing (update)
 
+import ScapelandDebug.Model
 import Model exposing (Model)
-import Msg exposing (Msg(MousePosition))
+import Msg exposing (Msg(MousePosition, HideMessagesLike))
 
 
 update : Msg -> Model -> Model
 update msg model =
     model
         |> recordSubscriptionValues msg
-        |> recordMessage msg
+        |> updateDebugModel (recordMessage msg)
+        |> respond msg
+
+
+respond msg model =
+    case msg of
+        HideMessagesLike thisOne ->
+            model
+
+        _ ->
+            model
 
 
 recordSubscriptionValues msg model =
@@ -16,13 +27,18 @@ recordSubscriptionValues msg model =
         MousePosition m ->
             { model | mousePosition = m }
 
+        _ ->
+            model
 
+
+updateDebugModel :
+    (ScapelandDebug.Model.Model -> ScapelandDebug.Model.Model)
+    -> Model
+    -> Model
+updateDebugModel f model =
+    { model | debug = f model.debug }
+
+
+recordMessage : Msg -> ScapelandDebug.Model.Model -> ScapelandDebug.Model.Model
 recordMessage msg model =
-    let
-        prevDebugModel =
-            model.debug
-
-        debugModel =
-            { prevDebugModel | messages = msg :: model.debug.messages }
-    in
-        { model | debug = debugModel }
+    { model | messages = msg :: model.messages }

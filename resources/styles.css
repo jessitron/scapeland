@@ -30,6 +30,11 @@ aside ul {
   padding: 0;
 }
 
+aside li a {
+  font-size: small;
+  color: blue;
+}
+
 aside li {
   margin: 0 10px;
   margin-right: 10px;

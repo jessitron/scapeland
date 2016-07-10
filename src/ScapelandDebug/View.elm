@@ -2,6 +2,8 @@ module ScapelandDebug.View exposing (view)
 
 import Html
 import Html.Attributes as Attr
+import Html.Events as E
+import Msg exposing (Msg(..))
 
 
 view m =
@@ -15,7 +17,11 @@ messages m =
 
 
 messageItem msg =
-    Html.li [] [ Html.text (toString msg) ]
+    Html.li []
+        [ Html.text (toString msg)
+        , Html.text " "
+        , Html.a [ E.onClick (HideMessagesLike msg) ] [ Html.text "Hide these" ]
+        ]
 
 
 subscriptionValues m =

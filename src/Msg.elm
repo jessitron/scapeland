@@ -5,3 +5,4 @@ import Mouse
 
 type Msg
     = MousePosition Mouse.Position
+    | HideMessagesLike Msg
