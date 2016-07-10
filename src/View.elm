@@ -3,7 +3,7 @@ module View exposing (view)
 import Html exposing (Html)
 import Model exposing (Model)
 import Msg exposing (Msg)
-import Debug.View
+import ScapelandDebug.View
 import Landscape.View
 
 
@@ -14,5 +14,5 @@ view model =
             [ Landscape.View.view model
             ]
         , Html.aside []
-            [ Debug.View.view model ]
+            [ ScapelandDebug.View.view model ]
         ]

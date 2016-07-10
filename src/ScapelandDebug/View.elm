@@ -1,4 +1,4 @@
-module Debug.View exposing (view)
+module ScapelandDebug.View exposing (view)
 
 import Html
 import Html.Attributes as Attr

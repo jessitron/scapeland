@@ -6,7 +6,7 @@ import View
 import Model
 import Mouse
 import Msg exposing (Msg(MousePosition))
-import Debug.Update
+import ScapelandDebug.Update
 
 
 main : Program Never
@@ -23,6 +23,6 @@ main =
 update msg model =
     let
         debugUpdatedModel =
-            Debug.Update.update msg model
+            ScapelandDebug.Update.update msg model
     in
         ( debugUpdatedModel, Cmd.none )
