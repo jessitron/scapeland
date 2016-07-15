@@ -15,8 +15,9 @@ type alias ComparableMsg =
 
 makeComparable : Msg -> ComparableMsg
 makeComparable msg =
-    msg |> toString |> firstWord
+    case msg of
+        MousePosition _ ->
+            "MousePosition"
 
-
-firstWord string =
-    string |> String.words |> List.head |> Maybe.withDefault ""
+        HideMessagesLike _ ->
+            "HideMessagesLike"
