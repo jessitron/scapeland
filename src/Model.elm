@@ -1,5 +1,6 @@
 module Model exposing (Model, init)
 
+import Dict
 import Mouse
 import ScapelandDebug.Model
 

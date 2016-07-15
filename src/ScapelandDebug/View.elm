@@ -1,18 +1,23 @@
 module ScapelandDebug.View exposing (view)
 
-import Html
+import Html exposing (Html)
 import Html.Attributes as Attr
 import Html.Events as E
 import Msg exposing (Msg(..))
+import ScapelandDebug.Model exposing (isVisible)
 
 
 view m =
-    Html.div [] [ subscriptionValues m, messages m.debug.messages ]
+    Html.div [] [ subscriptionValues m, messages m.debug ]
 
 
 messages m =
     debugSection "Messages"
-        [ Html.ul [] (List.map messageItem m)
+        [ (m.messages
+            |> List.filter (isVisible m)
+            |> List.map messageItem
+            |> Html.ul []
+          )
         ]
 
 
@@ -30,6 +35,7 @@ subscriptionValues m =
         ]
 
 
+debugSection : String -> List (Html Msg) -> Html Msg
 debugSection name contents =
     Html.div [ Attr.class "debugSection" ]
         ([ Html.text name

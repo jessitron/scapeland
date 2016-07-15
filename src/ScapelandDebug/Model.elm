@@ -1,12 +1,27 @@
-module ScapelandDebug.Model exposing (Model, init)
+module ScapelandDebug.Model exposing (Model, init, isVisible, Visibility(..))
 
+import Dict exposing (Dict)
 import Msg exposing (Msg(..))
 
 
 type alias Model =
     { messages : List Msg
-    , messageVisibility : Msg -> Visibility
+    , requestedMessageVisibility : Dict Msg.ComparableMsg Visibility
     }
+
+
+isVisible : Model -> Msg -> Bool
+isVisible model msg =
+    let
+        viz =
+            case Dict.get (Msg.makeComparable msg) model.requestedMessageVisibility of
+                Just viz ->
+                    viz
+
+                Nothing ->
+                    messageVisibilityDefaults msg
+    in
+        viz == Show
 
 
 type Visibility
@@ -16,7 +31,7 @@ type Visibility
 
 init =
     { messages = []
-    , messageVisibility = messageVisibilityDefaults
+    , requestedMessageVisibility = Dict.empty
     }
 
 
