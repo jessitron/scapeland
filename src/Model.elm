@@ -3,16 +3,17 @@ module Model exposing (Model, init)
 import Dict
 import Mouse
 import ScapelandDebug.Model
+import Scapeland.Model
 
 
 type alias Model =
-    { mousePosition : Mouse.Position
+    { app : Scapeland.Model.Model
     , debug : ScapelandDebug.Model.Model
     }
 
 
 init : Model
 init =
-    { mousePosition = { x = 0, y = 0 }
+    { app = Scapeland.Model.init
     , debug = ScapelandDebug.Model.init
     }
