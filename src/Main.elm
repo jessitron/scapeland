@@ -13,7 +13,7 @@ import Scapeland.View
 main : Program Never
 main =
     { init = ( Model.init, Cmd.none )
-    , update = update
+    , update = updateWithDebug
     , subscriptions = \m -> Mouse.moves MousePosition
     , view = viewWithDebug
     }
@@ -31,7 +31,7 @@ viewWithDebug model =
         ]
 
 
-update msg model =
+updateWithDebug msg model =
     let
         debugUpdatedModel =
             ScapelandDebug.Update.update msg model
