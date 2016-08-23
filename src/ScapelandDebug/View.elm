@@ -3,12 +3,14 @@ module ScapelandDebug.View exposing (view)
 import Html exposing (Html)
 import Html.Attributes as Attr
 import Html.Events as E
+import Model
 import Msg exposing (Msg(..))
 import ScapelandDebug.Model exposing (isVisible)
 
 
+view : Model.Model -> Html Msg
 view m =
-    Html.div [] [ subscriptionValues m, messages m.debug ]
+    Html.div [] [ subscriptionValues m.world, messages m.debug ]
 
 
 messages m =

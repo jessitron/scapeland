@@ -2,6 +2,7 @@ module Scapeland.View exposing (view)
 
 import Html
 import Html.Attributes as Attr
+import Model
 
 
 view m =

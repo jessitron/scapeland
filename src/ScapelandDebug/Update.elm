@@ -9,7 +9,6 @@ import Msg exposing (Msg(MousePosition, HideMessagesLike))
 update : Msg -> Model -> Model
 update msg model =
     model
-        |> recordSubscriptionValues msg
         |> updateDebugModel (recordMessage msg)
         |> respond msg
 
@@ -19,15 +18,6 @@ respond msg model =
         HideMessagesLike thisOne ->
             updateDebugModel (addToMessageVisibility thisOne Hide)
                 model
-
-        _ ->
-            model
-
-
-recordSubscriptionValues msg model =
-    case msg of
-        MousePosition m ->
-            { model | mousePosition = m }
 
         _ ->
             model
