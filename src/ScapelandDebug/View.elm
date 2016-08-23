@@ -4,7 +4,8 @@ import Html exposing (Html)
 import Html.Attributes as Attr
 import Html.Events as E
 import Model
-import Msg exposing (Msg(..))
+import Msg
+import ScapelandDebug.Msg exposing (Msg(..))
 import ScapelandDebug.Model exposing (isVisible)
 
 
@@ -27,7 +28,7 @@ messageItem msg =
     Html.li []
         [ Html.text (toString msg)
         , Html.text " "
-        , Html.a [ E.onClick (HideMessagesLike msg) ] [ Html.text "Hide these" ]
+        , Html.a [ E.onClick (HideMessagesLike (Msg.makeComparable msg)) ] [ Html.text "Hide these" ]
         ]
 
 

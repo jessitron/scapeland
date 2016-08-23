@@ -2,11 +2,12 @@ module ScapelandDebug.Model exposing (Model, init, isVisible, Visibility(..))
 
 import Dict exposing (Dict)
 import Msg exposing (Msg(..))
+import ScapelandDebug.ComparableMsg exposing (ComparableMsg)
 
 
 type alias Model =
     { messages : List Msg
-    , requestedMessageVisibility : Dict Msg.ComparableMsg Visibility
+    , requestedMessageVisibility : Dict ComparableMsg Visibility
     }
 
 

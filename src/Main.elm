@@ -4,20 +4,25 @@ import Html exposing (Html)
 import Html.App
 import Model
 import Mouse
-import Msg exposing (Msg(MousePosition))
 import ScapelandDebug.Update
 import ScapelandDebug.View
 import Scapeland.View
+import Scapeland.Subscriptions
+import Msg exposing (Msg)
 
 
 main : Program Never
 main =
     { init = ( Model.init, Cmd.none )
     , update = updateWithDebug
-    , subscriptions = \m -> Mouse.moves MousePosition
+    , subscriptions = subscriptionsAsWorld
     , view = viewWithDebug
     }
         |> Html.App.program
+
+
+subscriptionsAsWorld _ =
+    Sub.map Msg.World Scapeland.Subscriptions.subscriptions
 
 
 viewWithDebug : Model.Model -> Html Msg
@@ -27,7 +32,7 @@ viewWithDebug model =
             [ Scapeland.View.view model
             ]
         , Html.aside []
-            [ ScapelandDebug.View.view model ]
+            [ Html.App.map Msg.Debug (ScapelandDebug.View.view model) ]
         ]
 
 

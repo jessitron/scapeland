@@ -2,8 +2,10 @@ module ScapelandDebug.Update exposing (update)
 
 import Dict
 import ScapelandDebug.Model exposing (Visibility(..))
+import ScapelandDebug.Msg
+import ScapelandDebug.ComparableMsg exposing (ComparableMsg)
 import Model exposing (Model)
-import Msg exposing (Msg(MousePosition, HideMessagesLike))
+import Msg exposing (Msg(Debug, World))
 
 
 update : Msg -> Model -> Model
@@ -15,7 +17,7 @@ update msg model =
 
 respond msg model =
     case msg of
-        HideMessagesLike thisOne ->
+        Debug (ScapelandDebug.Msg.HideMessagesLike thisOne) ->
             updateDebugModel (addToMessageVisibility thisOne Hide)
                 model
 
@@ -32,17 +34,17 @@ updateDebugModel f model =
 
 
 addToMessageVisibility :
-    Msg
+    ComparableMsg
     -> Visibility
     -> ScapelandDebug.Model.Model
     -> ScapelandDebug.Model.Model
-addToMessageVisibility msg viz debugModel =
+addToMessageVisibility message viz debugModel =
     let
         oldVisibilities =
             debugModel.requestedMessageVisibility
 
         newVisibilities =
-            Dict.insert (Msg.makeComparable msg) viz oldVisibilities
+            Dict.insert message viz oldVisibilities
     in
         { debugModel
             | requestedMessageVisibility =

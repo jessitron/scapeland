@@ -1,4 +1,4 @@
-module Scapeland.Subscriptions exposing (World, initWorld)
+module Scapeland.Subscriptions exposing (subscriptions, World, Msg(..), initWorld)
 
 import Mouse
 
@@ -6,6 +6,14 @@ import Mouse
 type alias World =
     { mousePosition : Mouse.Position
     }
+
+
+subscriptions =
+    Mouse.moves MousePosition
+
+
+type Msg
+    = MousePosition Mouse.Position
 
 
 initWorld : World

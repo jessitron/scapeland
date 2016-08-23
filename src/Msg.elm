@@ -1,23 +1,26 @@
-module Msg exposing (Msg(..), ComparableMsg, makeComparable)
+module Msg exposing (Msg(..), makeComparable)
 
 import Mouse
 import String
+import Scapeland.Subscriptions
+import ScapelandDebug.Msg
+import ScapelandDebug.ComparableMsg exposing (ComparableMsg)
 
 
 type Msg
-    = MousePosition Mouse.Position
-    | HideMessagesLike Msg
+    = World Scapeland.Subscriptions.Msg
+    | Debug ScapelandDebug.Msg.Msg
 
 
-type alias ComparableMsg =
-    String
+
+-- I will move this down into debug-land
 
 
 makeComparable : Msg -> ComparableMsg
 makeComparable msg =
     case msg of
-        MousePosition _ ->
+        World (Scapeland.Subscriptions.MousePosition _) ->
             "MousePosition"
 
-        HideMessagesLike _ ->
+        Debug (ScapelandDebug.Msg.HideMessagesLike _) ->
             "HideMessagesLike"
