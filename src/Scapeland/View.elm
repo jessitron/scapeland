@@ -1,4 +1,4 @@
-module Landscape.View exposing (view)
+module Scapeland.View exposing (view)
 
 import Html
 import Html.Attributes as Attr

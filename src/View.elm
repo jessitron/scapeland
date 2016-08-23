@@ -4,14 +4,14 @@ import Html exposing (Html)
 import Model exposing (Model)
 import Msg exposing (Msg)
 import ScapelandDebug.View
-import Landscape.View
+import Scapeland.View
 
 
 view : Model -> Html Msg
 view model =
     Html.div []
         [ Html.main' []
-            [ Landscape.View.view model
+            [ Scapeland.View.view model
             ]
         , Html.aside []
             [ ScapelandDebug.View.view model ]
