@@ -23,7 +23,7 @@ all =
                         [ mousePositionMessage x y ]
 
                     result =
-                        List.foldl ScapelandDebug.Update.update Model.init messages
+                        List.foldl Update.updateOnly Model.init messages
                 in
                     Expect.equal messages result.debug.messages
         , fuzz2 mousePositionX mousePositionY "When asked to stop messages it does not store them"
@@ -39,7 +39,7 @@ all =
                         [ pleaseStopRecordingMessage, worldMessage ]
 
                     result =
-                        List.foldl ScapelandDebug.Update.update Model.init messages
+                        List.foldl Update.updateOnly Model.init messages
                 in
                     Expect.equal [ pleaseStopRecordingMessage ] result.debug.messages
         , fuzz2 mousePositionX mousePositionY "It always displays the latest mouse position"
