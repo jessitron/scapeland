@@ -4,11 +4,11 @@ import Html exposing (Html)
 import Html.App
 import Model
 import Mouse
-import ScapelandDebug.Update
 import ScapelandDebug.View
 import Scapeland.View
 import Scapeland.Subscriptions
-import Msg exposing (Msg(World))
+import Msg exposing (Msg)
+import Update exposing (updateWithDebug)
 
 
 main : Program Never
@@ -34,26 +34,3 @@ viewWithDebug model =
         , Html.aside []
             [ Html.App.map Msg.Debug (ScapelandDebug.View.view model) ]
         ]
-
-
-updateWithDebug msg model =
-    let
-        updatedModel =
-            model
-                |> ScapelandDebug.Update.update msg
-                |> worldUpdatedModel msg
-    in
-        ( updatedModel, Cmd.none )
-
-
-worldUpdatedModel msg model =
-    case msg of
-        World m ->
-            let
-                newWorld =
-                    Scapeland.Subscriptions.updateWorld m model.world
-            in
-                { model | world = newWorld }
-
-        _ ->
-            model

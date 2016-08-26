@@ -9,6 +9,7 @@ import Model
 import Fuzzer.Msg exposing (mousePositionX, mousePositionY, mousePositionMessage)
 import ScapelandDebug.Msg exposing (Msg(StopMessagesLike))
 import Msg
+import Update
 import ScapelandDebug.View.MessageConstruction exposing (pleaseStopRecording)
 
 
@@ -48,7 +49,7 @@ all =
                         [ mousePositionMessage x y ]
 
                     result =
-                        List.foldl ScapelandDebug.Update.update Model.init messages
+                        List.foldl Update.updateOnly Model.init messages
                 in
                     Expect.equal { x = x, y = y } result.world.mousePosition
         ]
