@@ -5,7 +5,7 @@ import Html.Attributes as Attr
 import Html.Events as E
 import Model
 import Msg
-import ScapelandDebug.Msg exposing (Msg(..))
+import ScapelandDebug.Msg as DebugMsg exposing (Msg(..))
 import ScapelandDebug.Model exposing (isVisible)
 
 
