@@ -25,7 +25,7 @@ all =
                         List.foldl ScapelandDebug.Update.update Model.init messages
                 in
                     Expect.equal messages result.debug.messages
-        , fuzz2 mousePositionX mousePositionY "When asked to hide messages it does not store them"
+        , fuzz2 mousePositionX mousePositionY "When asked to stop messages it does not store them"
             <| \x y ->
                 let
                     worldMessage =
