@@ -4,7 +4,7 @@ module ScapelandDebug.View.MessageConstruction exposing (..)
 -- This lets us call them from tests.
 
 import Msg as TopLevelMsg
-import ScapelandDebug.Msg as DebugMsg exposing (Msg(HideMessagesLike))
+import ScapelandDebug.Msg as DebugMsg exposing (Msg(StopMessagesLike))
 
 
 -- the message sent when the user wants to hide a kind of message
@@ -12,4 +12,4 @@ import ScapelandDebug.Msg as DebugMsg exposing (Msg(HideMessagesLike))
 
 pleaseHide : TopLevelMsg.Msg -> DebugMsg.Msg
 pleaseHide msg =
-    HideMessagesLike (TopLevelMsg.makeComparable msg)
+    StopMessagesLike (TopLevelMsg.makeComparable msg)

@@ -4,4 +4,4 @@ import ScapelandDebug.ComparableMsg exposing (ComparableMsg)
 
 
 type Msg
-    = HideMessagesLike ComparableMsg
+    = StopMessagesLike ComparableMsg

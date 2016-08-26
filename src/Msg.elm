@@ -22,5 +22,5 @@ makeComparable msg =
         World (Scapeland.Subscriptions.MousePosition _) ->
             "MousePosition"
 
-        Debug (ScapelandDebug.Msg.HideMessagesLike _) ->
-            "HideMessagesLike"
+        Debug (ScapelandDebug.Msg.StopMessagesLike _) ->
+            "StopMessagesLike"

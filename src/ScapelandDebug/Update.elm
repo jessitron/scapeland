@@ -17,7 +17,7 @@ update msg model =
 
 respond msg model =
     case msg of
-        Debug (ScapelandDebug.Msg.HideMessagesLike thisOne) ->
+        Debug (ScapelandDebug.Msg.StopMessagesLike thisOne) ->
             updateDebugModel (addToMessageVisibility thisOne Hide)
                 model
 

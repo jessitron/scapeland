@@ -7,7 +7,7 @@ import String
 import ScapelandDebug.Update
 import Model
 import Fuzzer.Msg exposing (mousePositionX, mousePositionY, mousePositionMessage)
-import ScapelandDebug.Msg exposing (Msg(HideMessagesLike))
+import ScapelandDebug.Msg exposing (Msg(StopMessagesLike))
 import Msg
 import ScapelandDebug.View.MessageConstruction exposing (pleaseHide)
 
