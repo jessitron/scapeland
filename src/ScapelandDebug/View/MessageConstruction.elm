@@ -10,6 +10,6 @@ import ScapelandDebug.Msg as DebugMsg exposing (Msg(StopMessagesLike))
 -- the message sent when the user wants to hide a kind of message
 
 
-pleaseHide : TopLevelMsg.Msg -> DebugMsg.Msg
-pleaseHide msg =
+pleaseStopRecording : TopLevelMsg.Msg -> DebugMsg.Msg
+pleaseStopRecording msg =
     StopMessagesLike (TopLevelMsg.makeComparable msg)

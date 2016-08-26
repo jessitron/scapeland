@@ -7,7 +7,7 @@ import Model
 import Msg
 import ScapelandDebug.Msg as DebugMsg exposing (Msg(..))
 import ScapelandDebug.Model exposing (isVisible)
-import ScapelandDebug.View.MessageConstruction exposing (pleaseHide)
+import ScapelandDebug.View.MessageConstruction exposing (pleaseStopRecording)
 
 
 view : Model.Model -> Html Msg
@@ -28,7 +28,7 @@ messageItem msg =
     Html.li []
         [ Html.text (toString msg)
         , Html.text " "
-        , Html.a [ E.onClick (pleaseHide msg) ] [ Html.text "Hide these" ]
+        , Html.a [ E.onClick (pleaseStopRecording msg) ] [ Html.text "Hide these" ]
         ]
 
 
