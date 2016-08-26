@@ -1,4 +1,4 @@
-module ScapelandDebug.View exposing (view)
+module ScapelandDebug.View exposing (view, pleaseHide)
 
 import Html exposing (Html)
 import Html.Attributes as Attr
@@ -12,6 +12,14 @@ import ScapelandDebug.Model exposing (isVisible)
 view : Model.Model -> Html Msg
 view m =
     Html.div [] [ subscriptionValues m.world, messages m.debug ]
+
+
+
+-- the message sent when the user wants to hide a kind of message
+
+
+pleaseHide msg =
+    HideMessagesLike (Msg.makeComparable msg)
 
 
 messages m =
@@ -28,7 +36,7 @@ messageItem msg =
     Html.li []
         [ Html.text (toString msg)
         , Html.text " "
-        , Html.a [ E.onClick (HideMessagesLike (Msg.makeComparable msg)) ] [ Html.text "Hide these" ]
+        , Html.a [ E.onClick (pleaseHide msg) ] [ Html.text "Hide these" ]
         ]
 
 

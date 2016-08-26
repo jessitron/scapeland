@@ -9,6 +9,7 @@ import Model
 import Fuzzer.Msg exposing (mousePositionX, mousePositionY, mousePositionMessage)
 import ScapelandDebug.Msg exposing (Msg(HideMessagesLike))
 import Msg
+import ScapelandDebug.View exposing (pleaseHide)
 
 
 all : Test
@@ -30,14 +31,14 @@ all =
                     worldMessage =
                         mousePositionMessage x y
 
-                    pleaseHide =
-                        Msg.Debug (HideMessagesLike (Msg.makeComparable worldMessage))
+                    pleaseHideMessage =
+                        Msg.Debug (pleaseHide worldMessage)
 
                     messages =
-                        [ pleaseHide, worldMessage ]
+                        [ pleaseHideMessage, worldMessage ]
 
                     result =
                         List.foldr ScapelandDebug.Update.update Model.init messages
                 in
-                    Expect.equal [ pleaseHide ] result.debug.messages
+                    Expect.equal [ pleaseHideMessage ] result.debug.messages
         ]
