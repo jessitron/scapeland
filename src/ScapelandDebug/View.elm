@@ -28,7 +28,7 @@ messageItem msg =
     Html.li []
         [ Html.text (toString msg)
         , Html.text " "
-        , Html.a [ E.onClick (pleaseStopRecording msg) ] [ Html.text "Stop these" ]
+        , Html.a [ E.onClick (pleaseStopRecording msg) ] [ Html.text "Boring" ]
         ]
 
 
