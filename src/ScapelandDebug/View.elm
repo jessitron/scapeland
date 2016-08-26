@@ -18,7 +18,6 @@ view m =
 messages m =
     debugSection "Messages"
         [ (m.messages
-            |> List.filter (isVisible m)
             |> List.map messageItem
             |> Html.ul []
           )
