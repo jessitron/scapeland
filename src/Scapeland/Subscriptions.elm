@@ -19,3 +19,10 @@ type Msg
 initWorld : World
 initWorld =
     { mousePosition = { x = 0, y = 0 } }
+
+
+updateWorld : Msg -> World -> World
+updateWorld msg world =
+    case msg of
+        MousePosition x ->
+            { world | mousePosition = x }

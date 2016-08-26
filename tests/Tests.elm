@@ -14,7 +14,7 @@ import ScapelandDebug.View.MessageConstruction exposing (pleaseStopRecording)
 
 all : Test
 all =
-    describe "Saving messages"
+    describe "how do I combine multiple suites"
         [ fuzz2 mousePositionX mousePositionY "When I send messages to update they get stored in the debug.messages"
             <| \x y ->
                 let
@@ -41,4 +41,14 @@ all =
                         List.foldl ScapelandDebug.Update.update Model.init messages
                 in
                     Expect.equal [ pleaseStopRecordingMessage ] result.debug.messages
+        , fuzz2 mousePositionX mousePositionY "It always displays the latest mouse position"
+            <| \x y ->
+                let
+                    messages =
+                        [ mousePositionMessage x y ]
+
+                    result =
+                        List.foldl ScapelandDebug.Update.update Model.init messages
+                in
+                    Expect.equal { x = x, y = y } result.world.mousePosition
         ]
