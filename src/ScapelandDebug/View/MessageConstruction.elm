@@ -7,7 +7,7 @@ import Msg as TopLevelMsg
 import ScapelandDebug.Msg as DebugMsg exposing (Msg(StopMessagesLike))
 
 
--- the message sent when the user wants to hide a kind of message
+-- the message sent when the user wants to stop recording a kind of message
 
 
 pleaseStopRecording : TopLevelMsg.Msg -> DebugMsg.Msg

@@ -8,7 +8,7 @@ import ScapelandDebug.Update
 import ScapelandDebug.View
 import Scapeland.View
 import Scapeland.Subscriptions
-import Msg exposing (Msg)
+import Msg exposing (Msg(World))
 
 
 main : Program Never
@@ -38,7 +38,22 @@ viewWithDebug model =
 
 updateWithDebug msg model =
     let
-        debugUpdatedModel =
-            ScapelandDebug.Update.update msg model
+        updatedModel =
+            model
+                |> ScapelandDebug.Update.update msg
+                |> worldUpdatedModel msg
     in
-        ( debugUpdatedModel, Cmd.none )
+        ( updatedModel, Cmd.none )
+
+
+worldUpdatedModel msg model =
+    case msg of
+        World m ->
+            let
+                newWorld =
+                    Scapeland.Subscriptions.updateWorld m model.world
+            in
+                { model | world = newWorld }
+
+        _ ->
+            model

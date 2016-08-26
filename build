@@ -1,5 +1,13 @@
 #!/bin/bash
 
+echo "Compiling..."
+elm make --output target/elm.js src/Main.elm
+compile_result=$?
+if [ $compile_result -gt 0 ] ; then
+  echo "Exiting $compile_result because compile failed"
+  exit $compile_result
+fi
+
 elm-test
 test_result=$?
 if [ $test_result -gt 0 ] ; then

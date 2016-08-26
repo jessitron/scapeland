@@ -1,4 +1,4 @@
-module Scapeland.Subscriptions exposing (subscriptions, World, Msg(..), initWorld)
+module Scapeland.Subscriptions exposing (subscriptions, World, Msg(..), initWorld, updateWorld)
 
 import Mouse
 
