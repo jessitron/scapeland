@@ -1,7 +1,7 @@
 module ScapelandDebug.Update exposing (update)
 
 import Dict
-import ScapelandDebug.Model exposing (Visibility(..))
+import ScapelandDebug.Model exposing (Visibility(..), isVisible)
 import ScapelandDebug.Msg
 import ScapelandDebug.ComparableMsg exposing (ComparableMsg)
 import Model exposing (Model)
@@ -54,4 +54,7 @@ addToMessageVisibility message viz debugModel =
 
 recordMessage : Msg -> ScapelandDebug.Model.Model -> ScapelandDebug.Model.Model
 recordMessage msg model =
-    { model | messages = msg :: model.messages }
+    if (isVisible model msg) then
+        { model | messages = msg :: model.messages }
+    else
+        model

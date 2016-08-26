@@ -22,7 +22,7 @@ all =
                         [ mousePositionMessage x y ]
 
                     result =
-                        List.foldr ScapelandDebug.Update.update Model.init messages
+                        List.foldl ScapelandDebug.Update.update Model.init messages
                 in
                     Expect.equal messages result.debug.messages
         , fuzz2 mousePositionX mousePositionY "When asked to hide messages it does not store them"
@@ -38,7 +38,7 @@ all =
                         [ pleaseHideMessage, worldMessage ]
 
                     result =
-                        List.foldr ScapelandDebug.Update.update Model.init messages
+                        List.foldl ScapelandDebug.Update.update Model.init messages
                 in
                     Expect.equal [ pleaseHideMessage ] result.debug.messages
         ]
