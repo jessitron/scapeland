@@ -35,6 +35,7 @@ messageItem msg =
 subscriptionValues m =
     debugSection "Subscriptions"
         [ mousePositionSubscription m.mousePosition
+        , keysDownSubscription m.keysDown
         ]
 
 
@@ -52,4 +53,11 @@ mousePositionSubscription m =
     Html.div []
         [ Html.label [] [ Html.text "Mouse Position" ]
         , Html.output [] [ Html.text (toString m) ]
+        ]
+
+
+keysDownSubscription keys =
+    Html.div []
+        [ Html.label [] [ Html.text "Keys Down" ]
+        , Html.output [] [ Html.text (toString keys) ]
         ]

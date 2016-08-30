@@ -19,8 +19,8 @@ type Msg
 makeComparable : Msg -> ComparableMsg
 makeComparable msg =
     case msg of
-        World (Scapeland.Subscriptions.MousePosition _) ->
-            "MousePosition"
+        World w ->
+            Scapeland.Subscriptions.makeComparable w
 
         Debug (ScapelandDebug.Msg.StopMessagesLike _) ->
             "StopMessagesLike"
