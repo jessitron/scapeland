@@ -1,4 +1,4 @@
-module Scapeland.Subscriptions exposing (subscriptions, World, Msg(..), initWorld, updateWorld)
+module Scapeland.Subscriptions exposing (subscriptions, World, Msg(..), makeComparable, initWorld, updateWorld)
 
 import Mouse
 
@@ -14,6 +14,12 @@ subscriptions =
 
 type Msg
     = MousePosition Mouse.Position
+
+
+makeComparable msg =
+    case msg of
+        MousePosition _ ->
+            "MousePosition"
 
 
 initWorld : World
